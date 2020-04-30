@@ -45,15 +45,15 @@
             // 
             // textBoxName
             // 
-            this.textBoxName.Location = new System.Drawing.Point(29, 44);
+            this.textBoxName.Location = new System.Drawing.Point(196, 22);
             this.textBoxName.Name = "textBoxName";
-            this.textBoxName.Size = new System.Drawing.Size(165, 22);
+            this.textBoxName.Size = new System.Drawing.Size(250, 22);
             this.textBoxName.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(26, 24);
+            this.label1.Location = new System.Drawing.Point(25, 25);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(165, 17);
             this.label1.TabIndex = 1;
@@ -62,7 +62,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(16, 117);
+            this.label2.Location = new System.Drawing.Point(25, 167);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(198, 17);
             this.label2.TabIndex = 2;
@@ -71,7 +71,7 @@
             // open_button
             // 
             this.open_button.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.open_button.Location = new System.Drawing.Point(29, 139);
+            this.open_button.Location = new System.Drawing.Point(281, 162);
             this.open_button.Name = "open_button";
             this.open_button.Size = new System.Drawing.Size(165, 26);
             this.open_button.TabIndex = 3;
@@ -87,7 +87,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(26, 168);
+            this.label3.Location = new System.Drawing.Point(25, 95);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(168, 17);
             this.label3.TabIndex = 4;
@@ -95,7 +95,7 @@
             // 
             // textBoxKol
             // 
-            this.textBoxKol.Location = new System.Drawing.Point(29, 188);
+            this.textBoxKol.Location = new System.Drawing.Point(281, 92);
             this.textBoxKol.Name = "textBoxKol";
             this.textBoxKol.Size = new System.Drawing.Size(165, 22);
             this.textBoxKol.TabIndex = 5;
@@ -103,7 +103,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(16, 213);
+            this.label4.Location = new System.Drawing.Point(25, 130);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(202, 17);
             this.label4.TabIndex = 6;
@@ -111,7 +111,7 @@
             // 
             // textBoxVar
             // 
-            this.textBoxVar.Location = new System.Drawing.Point(29, 233);
+            this.textBoxVar.Location = new System.Drawing.Point(281, 127);
             this.textBoxVar.Name = "textBoxVar";
             this.textBoxVar.Size = new System.Drawing.Size(165, 22);
             this.textBoxVar.TabIndex = 7;
@@ -119,7 +119,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(16, 72);
+            this.label5.Location = new System.Drawing.Point(25, 60);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(195, 17);
             this.label5.TabIndex = 8;
@@ -127,7 +127,7 @@
             // 
             // textBoxGroup
             // 
-            this.textBoxGroup.Location = new System.Drawing.Point(29, 92);
+            this.textBoxGroup.Location = new System.Drawing.Point(281, 57);
             this.textBoxGroup.Name = "textBoxGroup";
             this.textBoxGroup.Size = new System.Drawing.Size(165, 22);
             this.textBoxGroup.TabIndex = 9;
@@ -136,9 +136,9 @@
             // 
             this.button_gen.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_gen.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.button_gen.Location = new System.Drawing.Point(15, 270);
+            this.button_gen.Location = new System.Drawing.Point(28, 197);
             this.button_gen.Name = "button_gen";
-            this.button_gen.Size = new System.Drawing.Size(196, 46);
+            this.button_gen.Size = new System.Drawing.Size(418, 36);
             this.button_gen.TabIndex = 10;
             this.button_gen.Text = "Добавить студента";
             this.button_gen.UseVisualStyleBackColor = true;
@@ -148,7 +148,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(232, 328);
+            this.ClientSize = new System.Drawing.Size(482, 253);
             this.Controls.Add(this.button_gen);
             this.Controls.Add(this.textBoxGroup);
             this.Controls.Add(this.label5);

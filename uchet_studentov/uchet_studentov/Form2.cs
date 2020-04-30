@@ -17,7 +17,7 @@ namespace uchet_studentov
         {
             InitializeComponent();
         }
-        bool check_file = false;
+        bool check_file = true;//Изменить на false когда закончу модуль чтения из документа.
         private void open_button_Click(object sender, EventArgs e)
         {
             if (openFileDialog1.ShowDialog()==DialogResult.OK) 
@@ -60,15 +60,43 @@ namespace uchet_studentov
             else
             {
                 /*Сохранение студента в файл*/
-                string writePath = @"C:\Users\User\Documents\Students\List.txt";
+                string writePath = @"C:\Users\User\Documents\Students\List.txt";//Позже буду использовать локальную папку в которой находится .exe
                 Directory.CreateDirectory("C:\\Users\\User\\Documents\\Students");
-                //FileStream fs = File.Create(writePath);
-                //fs.Close();
-                string text = "Привет мир!\nПока мир...";
-                using (StreamWriter sw = new StreamWriter(writePath, true, System.Text.Encoding.Default))
+                /*Собираем данные с textBox-ов и записываем в файл.*/
+
+                string kolz = textBoxKol.Text;
+                int kolzad = Convert.ToInt32(kolz);
+                string varz = textBoxVar.Text;
+                int varzad = Convert.ToInt32(varz);
+                if (kolzad < 1)
                 {
-                    sw.WriteLine(text);
+                    MessageBox.Show("Ошибка! Неккоректное колличество заданий!");
+
                 }
+                else if (varzad<1) 
+                {
+                    MessageBox.Show("Ошибка! Неккоректное колличество вариантов!");
+                }
+                else
+                {
+                    string name = textBoxName.Text;
+                    string group = textBoxGroup.Text;
+                    int[] zad = new int[kolzad];
+                    for (int i = 0; i < kolzad; i++)
+                    {
+                        zad[i] = 0;
+                    }
+                    string text = name + " " + group + " " + kolz + " " + varz;
+                    for (int i = 0; i < kolzad; i++)
+                    {
+                        text+= " "+zad[i];
+                    }
+                    using (StreamWriter sw = new StreamWriter(writePath, true, System.Text.Encoding.Default))
+                    {
+                        sw.WriteLine(text);
+                    }
+                }
+                
             }
             Close();
         }
