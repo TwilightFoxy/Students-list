@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.open_button = new System.Windows.Forms.Button();
@@ -40,14 +40,15 @@
             this.label5 = new System.Windows.Forms.Label();
             this.textBoxGroup = new System.Windows.Forms.TextBox();
             this.button_gen = new System.Windows.Forms.Button();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.SuspendLayout();
             // 
-            // textBox1
+            // textBoxName
             // 
-            this.textBox1.Location = new System.Drawing.Point(29, 44);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(165, 22);
-            this.textBox1.TabIndex = 0;
+            this.textBoxName.Location = new System.Drawing.Point(29, 44);
+            this.textBoxName.Name = "textBoxName";
+            this.textBoxName.Size = new System.Drawing.Size(165, 22);
+            this.textBoxName.TabIndex = 0;
             // 
             // label1
             // 
@@ -70,9 +71,9 @@
             // open_button
             // 
             this.open_button.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.open_button.Location = new System.Drawing.Point(29, 137);
+            this.open_button.Location = new System.Drawing.Point(29, 139);
             this.open_button.Name = "open_button";
-            this.open_button.Size = new System.Drawing.Size(165, 23);
+            this.open_button.Size = new System.Drawing.Size(165, 26);
             this.open_button.TabIndex = 3;
             this.open_button.Text = "Добавить файл";
             this.open_button.UseVisualStyleBackColor = true;
@@ -81,12 +82,12 @@
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
-            this.openFileDialog1.Filter = "(*.doc)|*.doc";
+            this.openFileDialog1.Filter = "(*.docx)|*.docx|(*.doc)|*.doc";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(26, 163);
+            this.label3.Location = new System.Drawing.Point(26, 168);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(168, 17);
             this.label3.TabIndex = 4;
@@ -94,7 +95,7 @@
             // 
             // textBoxKol
             // 
-            this.textBoxKol.Location = new System.Drawing.Point(29, 183);
+            this.textBoxKol.Location = new System.Drawing.Point(29, 188);
             this.textBoxKol.Name = "textBoxKol";
             this.textBoxKol.Size = new System.Drawing.Size(165, 22);
             this.textBoxKol.TabIndex = 5;
@@ -102,7 +103,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(16, 208);
+            this.label4.Location = new System.Drawing.Point(16, 213);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(202, 17);
             this.label4.TabIndex = 6;
@@ -110,7 +111,7 @@
             // 
             // textBoxVar
             // 
-            this.textBoxVar.Location = new System.Drawing.Point(29, 228);
+            this.textBoxVar.Location = new System.Drawing.Point(29, 233);
             this.textBoxVar.Name = "textBoxVar";
             this.textBoxVar.Size = new System.Drawing.Size(165, 22);
             this.textBoxVar.TabIndex = 7;
@@ -158,7 +159,7 @@
             this.Controls.Add(this.open_button);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textBoxName);
             this.Name = "New_St";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Новый студент";
@@ -169,7 +170,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBoxName;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button open_button;
@@ -181,5 +182,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox textBoxGroup;
         private System.Windows.Forms.Button button_gen;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }

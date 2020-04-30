@@ -9,3 +9,14 @@ C:\Users\User\source\repos\uchet_studentov\uchet_studentov\obj\Debug\uchet_stude
 C:\Users\User\source\repos\uchet_studentov\uchet_studentov\obj\Debug\uchet_studentov.csproj.CoreCompileInputs.cache
 C:\Users\User\source\repos\uchet_studentov\uchet_studentov\obj\Debug\uchet_studentov.exe
 C:\Users\User\source\repos\uchet_studentov\uchet_studentov\obj\Debug\uchet_studentov.pdb
+D:\repo\Students list\uchet_studentov\uchet_studentov\bin\Debug\uchet_studentov.exe.config
+D:\repo\Students list\uchet_studentov\uchet_studentov\bin\Debug\uchet_studentov.exe
+D:\repo\Students list\uchet_studentov\uchet_studentov\bin\Debug\uchet_studentov.pdb
+D:\repo\Students list\uchet_studentov\uchet_studentov\obj\Debug\uchet_studentov.csprojAssemblyReference.cache
+D:\repo\Students list\uchet_studentov\uchet_studentov\obj\Debug\uchet_studentov.Form1.resources
+D:\repo\Students list\uchet_studentov\uchet_studentov\obj\Debug\uchet_studentov.New_St.resources
+D:\repo\Students list\uchet_studentov\uchet_studentov\obj\Debug\uchet_studentov.Properties.Resources.resources
+D:\repo\Students list\uchet_studentov\uchet_studentov\obj\Debug\uchet_studentov.csproj.GenerateResource.cache
+D:\repo\Students list\uchet_studentov\uchet_studentov\obj\Debug\uchet_studentov.csproj.CoreCompileInputs.cache
+D:\repo\Students list\uchet_studentov\uchet_studentov\obj\Debug\uchet_studentov.exe
+D:\repo\Students list\uchet_studentov\uchet_studentov\obj\Debug\uchet_studentov.pdb
