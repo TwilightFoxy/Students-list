@@ -71,5 +71,10 @@ namespace uchet_studentov
             }
         }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Del_St del_student = new Del_St();
+            del_student.ShowDialog();
+        }
     }
 }
