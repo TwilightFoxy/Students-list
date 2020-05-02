@@ -32,6 +32,13 @@ namespace uchet_studentov
         {
             // Добавление студента
             bool check = true;
+            bool FIO = true;
+            string name = textBoxName.Text;
+            string[] mystring = name.Split(' ');
+            if (mystring.Length!=3)
+            {
+                FIO = false;
+            }
             if (textBoxName.Text == "")
             {
                 check = false;
@@ -55,7 +62,10 @@ namespace uchet_studentov
             if (!check)
             {
                 MessageBox.Show("Ошибка! Заполните все поля и добавьте файл!");
-
+            }
+            else if (!FIO)
+            {
+                MessageBox.Show("Ошибка! Неправильно заполненно поле ФИО!");
             }
             else
             {
@@ -73,13 +83,13 @@ namespace uchet_studentov
                     MessageBox.Show("Ошибка! Неккоректное колличество заданий!");
 
                 }
-                else if (varzad<1) 
+                else if (varzad < 1)
                 {
                     MessageBox.Show("Ошибка! Неккоректное колличество вариантов!");
                 }
                 else
                 {
-                    string name = textBoxName.Text;
+                    name = textBoxName.Text;
                     string group = textBoxGroup.Text;
                     int[] zad = new int[kolzad];
                     for (int i = 0; i < kolzad; i++)
@@ -89,14 +99,14 @@ namespace uchet_studentov
                     string text = name + " " + group + " " + kolz + " " + varz;
                     for (int i = 0; i < kolzad; i++)
                     {
-                        text+= " "+zad[i];
+                        text += " " + zad[i];
                     }
                     using (StreamWriter sw = new StreamWriter(writePath, true, System.Text.Encoding.Default))
                     {
                         sw.WriteLine(text);
                     }
                 }
-                
+
             }
             Close();
         }

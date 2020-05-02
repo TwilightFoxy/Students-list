@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.textBoxName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -41,6 +42,7 @@
             this.textBoxGroup = new System.Windows.Forms.TextBox();
             this.button_gen = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.SuspendLayout();
             // 
             // textBoxName
@@ -49,6 +51,8 @@
             this.textBoxName.Name = "textBoxName";
             this.textBoxName.Size = new System.Drawing.Size(250, 22);
             this.textBoxName.TabIndex = 0;
+            this.textBoxName.Text = "Иванов Иван Иванович";
+            this.toolTip1.SetToolTip(this.textBoxName, "Фамилия Имя Отчество, 3 слова через пробел!");
             // 
             // label1
             // 
@@ -144,6 +148,11 @@
             this.button_gen.UseVisualStyleBackColor = true;
             this.button_gen.Click += new System.EventHandler(this.button_gen_Click);
             // 
+            // toolTip1
+            // 
+            this.toolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.toolTip1.ToolTipTitle = "Внимание!";
+            // 
             // New_St
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -183,5 +192,6 @@
         private System.Windows.Forms.TextBox textBoxGroup;
         private System.Windows.Forms.Button button_gen;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

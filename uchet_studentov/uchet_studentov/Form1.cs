@@ -74,7 +74,12 @@ namespace uchet_studentov
                 string[] mystring = textFromFile.Split('\n');
                 //Разделил файл на строки, теперь разделим строки на слова.
                 int N = mystring.Length-1;
-                richTextBox2.Text = "" + N;
+                //richTextBox2.Text = "" + N;
+                for (int i = 0; i < N; i++)
+                {
+                    string[] words = mystring[i].Split(' ');
+                    richTextBox2.Text += words[4] + "\n";
+                }
             }
         }
     }
