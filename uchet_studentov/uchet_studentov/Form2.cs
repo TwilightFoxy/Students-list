@@ -164,12 +164,10 @@ namespace uchet_studentov
                     }
                     using (StreamWriter sw = new StreamWriter(writePath, false, System.Text.Encoding.Default))
                     {
-                        sw.WriteLine(new_text);
+                        string result = new_text.Trim('\r');
+                        sw.WriteLine(result);
                     }
-
-                    
                 }
-
             }
             Close();
         }

@@ -21,3 +21,4 @@ D:\repo\Students list\uchet_studentov\uchet_studentov\obj\Debug\uchet_studentov.
 D:\repo\Students list\uchet_studentov\uchet_studentov\obj\Debug\uchet_studentov.exe
 D:\repo\Students list\uchet_studentov\uchet_studentov\obj\Debug\uchet_studentov.pdb
 D:\repo\Students list\uchet_studentov\uchet_studentov\obj\Debug\uchet_studentov.Del_St.resources
+D:\repo\Students list\uchet_studentov\uchet_studentov\obj\Debug\uchet_studentov.Add_plus.resources

@@ -51,7 +51,6 @@ namespace uchet_studentov
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             string text_after_del = "";
-            bool zamena_prov = false;
             using (FileStream fstream = new FileStream(writePath, FileMode.OpenOrCreate))
             {
                 byte[] output = new byte[4];
@@ -121,7 +120,7 @@ namespace uchet_studentov
             //    listBox1.Items.Remove(listBox1.SelectedItem);
             using (StreamWriter sw = new StreamWriter(writePath, false, System.Text.Encoding.Default))
             {
-                char[] charsToTrim = { ' ', '\n' }; 
+                char[] charsToTrim = {'\r' }; 
                 string result = text_after_del.Trim(charsToTrim);
                 sw.WriteLine(result);
                 Close();
