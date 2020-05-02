@@ -39,6 +39,18 @@ namespace uchet_studentov
         {
             New_St student = new New_St();
             student.ShowDialog();
+            richTextBox1.Clear();
+
+            using (FileStream fstream = new FileStream(writePath, FileMode.OpenOrCreate))
+            {
+                byte[] output = new byte[4];
+                fstream.Seek(0, SeekOrigin.Begin);
+                output = new byte[fstream.Length];
+                fstream.Read(output, 0, output.Length);
+                // декодируем байты в строку
+                string textFromFile = Encoding.Default.GetString(output);
+                richTextBox1.Text = textFromFile;
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -59,28 +71,5 @@ namespace uchet_studentov
             }
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-            richTextBox2.Clear();
-            using (FileStream fstream = new FileStream(writePath, FileMode.OpenOrCreate))
-            {
-                byte[] output = new byte[4];
-                fstream.Seek(0, SeekOrigin.Begin);
-                output = new byte[fstream.Length];
-                fstream.Read(output, 0, output.Length);
-                // декодируем байты в строку
-
-                string textFromFile = Encoding.Default.GetString(output);
-                string[] mystring = textFromFile.Split('\n');
-                //Разделил файл на строки, теперь разделим строки на слова.
-                int N = mystring.Length-1;
-                //richTextBox2.Text = "" + N;
-                for (int i = 0; i < N; i++)
-                {
-                    string[] words = mystring[i].Split(' ');
-                    richTextBox2.Text += words[4] + "\n";
-                }
-            }
-        }
     }
 }
