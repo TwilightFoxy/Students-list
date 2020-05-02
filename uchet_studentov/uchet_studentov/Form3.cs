@@ -14,7 +14,6 @@ namespace uchet_studentov
     public partial class Del_St : Form
     {
         string writePath = @"C:\Users\User\Documents\Students\List.txt";//Позже буду использовать локальную папку в которой находится .exe
-
         public Del_St()
         {
             InitializeComponent();
@@ -28,6 +27,8 @@ namespace uchet_studentov
                 // декодируем байты в строку
 
                 string textFromFile = Encoding.Default.GetString(output);
+                char[] charsToTrim = { ' ', '\n' };
+                textFromFile = textFromFile.Trim(charsToTrim);
                 string[] mystring = textFromFile.Split('\n');
                 //Разделил файл на строки, теперь разделим строки на слова.
                 int N = mystring.Length;
@@ -47,9 +48,10 @@ namespace uchet_studentov
                 }
             }
         }
-
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            string text_after_del = "";
+            bool zamena_prov = false;
             using (FileStream fstream = new FileStream(writePath, FileMode.OpenOrCreate))
             {
                 byte[] output = new byte[4];
@@ -57,8 +59,10 @@ namespace uchet_studentov
                 output = new byte[fstream.Length];
                 fstream.Read(output, 0, output.Length);
                 // декодируем байты в строку
-
                 string textFromFile = Encoding.Default.GetString(output);
+                char[] charsToTrim = { ' ', '\n' };
+                textFromFile = textFromFile.Trim(charsToTrim);
+                text_after_del = textFromFile;
                 string[] mystring = textFromFile.Split('\n');
                 //Разделил файл на строки, теперь разделим строки на слова.
                 int N = mystring.Length;
@@ -73,7 +77,7 @@ namespace uchet_studentov
                 dolg = Convert.ToInt32(words[4]);
                 for (int i = 6; i < 6+Convert.ToInt32(words[4]); i++)
                 {
-                    MessageBox.Show("" + words[i]);
+                    //MessageBox.Show("" + words[i]);
                     if (words[i] == "-1")
                     {
                         dolg--;
@@ -86,12 +90,41 @@ namespace uchet_studentov
                 }
                 if (prov)
                 {
-                    MessageBox.Show("Вы хотите удалить студента " + words[0] + " " + words[1] + " " + words[2] + " из " + words[3] + " группы? Все задания ВЫПОЛНЕННЫ! Поздравляю студента!");
+                    string message = "Вы хотите удалить студента " + words[0] + " " + words[1] + " " + words[2] + " из " + words[3] + " группы? Все задания ВЫПОЛНЕННЫ! Поздравляю студента!";
+                    const string caption = "Form Closing";
+                    var result = MessageBox.Show(message, caption,
+                                 MessageBoxButtons.YesNo,
+                                 MessageBoxIcon.Question);
+                    if (result == DialogResult.Yes)
+                    {
+                        //Удаление студента 
+                        string substr = mystring[listBox1.SelectedIndex] + "\n";
+                        text_after_del = textFromFile.Replace(substr, "");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Вы хотите удалить студента " + words[0] + " " + words[1] + " " + words[2] + " из " + words[3] + " группы? Ещё не выполненны "+ dolg + "/"+ words[4] + " заданий!");
+                    string message = "Вы хотите удалить студента " + words[0] + " " + words[1] + " " + words[2] + " из " + words[3] + " группы? Ещё не выполненны " + dolg + "/" + words[4] + " заданий!";
+                    const string caption = "Form Closing";
+                    var result = MessageBox.Show(message, caption,
+                                 MessageBoxButtons.YesNo,
+                                 MessageBoxIcon.Question);
+                    if (result == DialogResult.Yes)
+                    {
+                        string substr = mystring[listBox1.SelectedIndex] + "\n";
+                        text_after_del = textFromFile.Replace(substr, "");
+                    }
                 }
+            }
+            //Замена текста в файле
+            //if (zamena_prov)
+            //    listBox1.Items.Remove(listBox1.SelectedItem);
+            using (StreamWriter sw = new StreamWriter(writePath, false, System.Text.Encoding.Default))
+            {
+                char[] charsToTrim = { ' ', '\n' }; 
+                string result = text_after_del.Trim(charsToTrim);
+                sw.WriteLine(result);
+                Close();
             }
         }
     }
