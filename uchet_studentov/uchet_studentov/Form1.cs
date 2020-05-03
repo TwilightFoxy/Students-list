@@ -118,7 +118,7 @@ namespace uchet_studentov
             fix_st();
             New_St student = new New_St();
             student.ShowDialog();
-            //sort_st();
+            fix_st();
             reload_st();
         }
         private void button2_Click(object sender, EventArgs e)
@@ -132,8 +132,7 @@ namespace uchet_studentov
             fix_st();
             Del_Stu student = new Del_Stu();
             student.ShowDialog();
-            //Del_St delet_student = new Del_St();
-            //delet_student.ShowDialog();
+            fix_st();
             reload_st();
         }
         private void button4_Click(object sender, EventArgs e)
@@ -141,6 +140,7 @@ namespace uchet_studentov
             fix_st();
             Add_plus student = new Add_plus();
             student.ShowDialog();
+            fix_st();
             reload_st();
         }
     }

@@ -32,7 +32,6 @@ namespace uchet_studentov
         public Del_Stu()
         {
             InitializeComponent();
-            listBox1.IntegralHeight = true;
             save_zone();
             using (FileStream fstream = new FileStream(writePath, FileMode.OpenOrCreate))
             {
@@ -87,7 +86,6 @@ namespace uchet_studentov
                     char[] charsToTrim = { '\r' };
                     string result = text_after_del.Trim(charsToTrim);
                     sw.WriteLine(result);
-                    Close();
                 }
                 using (FileStream fstream = new FileStream(writePath, FileMode.OpenOrCreate))
                 {
