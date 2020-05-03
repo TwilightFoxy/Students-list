@@ -49,10 +49,6 @@ namespace uchet_studentov
             {
                 check = false;
             }
-            if (textBoxVar.Text == "")
-            {
-                check = false;
-            }
             if (!check)
             {
                 MessageBox.Show("Ошибка! Заполните все поля и добавьте файл!");
@@ -70,16 +66,10 @@ namespace uchet_studentov
 
                 string kolz = textBoxKol.Text;
                 int kolzad = Convert.ToInt32(kolz);
-                string varz = textBoxVar.Text;
-                int varzad = Convert.ToInt32(varz);
                 if (kolzad < 1)
                 {
                     MessageBox.Show("Ошибка! Неккоректное колличество заданий!");
 
-                }
-                else if (varzad < 1)
-                {
-                    MessageBox.Show("Ошибка! Неккоректное колличество вариантов!");
                 }
                 else
                 {
@@ -90,7 +80,7 @@ namespace uchet_studentov
                     {
                         zad[i] = 0;
                     }
-                    string text = name + " " + group + " " + kolz + " " + varz;
+                    string text = name + " " + group + " " + kolz;
                     for (int i = 0; i < kolzad; i++)
                     {
                         text += " " + zad[i];

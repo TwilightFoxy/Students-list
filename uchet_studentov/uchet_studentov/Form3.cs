@@ -110,7 +110,7 @@ namespace uchet_studentov
                     bool prov = false;
                     string[] words = mystring[listBox1.SelectedIndex].Split(' ');
                     dolg = Convert.ToInt32(words[4]);
-                    for (int i = 6; i < 6 + Convert.ToInt32(words[4]); i++)
+                    for (int i = 5; i < 5 + Convert.ToInt32(words[4]); i++)
                     {
                         //MessageBox.Show("" + words[i]);
                         if (words[i] == "-1")

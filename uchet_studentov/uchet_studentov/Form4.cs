@@ -84,7 +84,7 @@ namespace uchet_studentov
                     string[] words = mystring[listBox1.SelectedIndex].Split(' ');
                     dolg = Convert.ToInt32(words[4]);
                     checkedListBox1.Items.Clear();
-                    for (int i = 6; i < 6 + Convert.ToInt32(words[4]); i++)
+                    for (int i = 5; i < 5 + Convert.ToInt32(words[4]); i++)
                     {
                         //MessageBox.Show("" + words[i]);
                         if (words[i] == "-1")
@@ -159,9 +159,9 @@ namespace uchet_studentov
                         //MessageBox.Show(words[6 + Convert.ToInt32(itemChecked.ToString())]);
                     }
                     new_text = "";
-                    for (int i = 0; i <= 5 + dolg; i++)
+                    for (int i = 0; i <= 4 + dolg; i++)
                     {
-                        if (i != 5 + dolg)
+                        if (i != 4 + dolg)
                         {
                             new_text += words[i] + " ";
                         }

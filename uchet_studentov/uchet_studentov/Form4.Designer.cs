@@ -91,6 +91,7 @@
             this.Controls.Add(this.checkedListBox1);
             this.Controls.Add(this.listBox1);
             this.Name = "Add_plus";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Изменение данных";
             this.ResumeLayout(false);
 
