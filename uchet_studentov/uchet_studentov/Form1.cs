@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 
@@ -93,6 +88,25 @@ namespace uchet_studentov
                 sw.WriteLine(result);
             }
         }
+        void fix_st()
+        {
+            string new_text = "";
+            using (FileStream fstream = new FileStream(writePath, FileMode.OpenOrCreate))
+            {
+                byte[] output = new byte[4];
+                fstream.Seek(0, SeekOrigin.Begin);
+                output = new byte[fstream.Length];
+                fstream.Read(output, 0, output.Length);
+                // декодируем байты в строку
+                string textFromFile = Encoding.Default.GetString(output);
+                new_text = textFromFile;
+            }
+            using (StreamWriter sw = new StreamWriter(writePath, false, System.Text.Encoding.Default))
+            {
+                string result = new_text.Trim('\r', '\n');
+                sw.WriteLine(result);
+            }
+        }
         public Form1()
         {
             InitializeComponent();
@@ -101,26 +115,30 @@ namespace uchet_studentov
         }
         private void button1_Click(object sender, EventArgs e)
         {
+            fix_st();
             New_St student = new New_St();
             student.ShowDialog();
-            sort_st();
+            //sort_st();
             reload_st();
         }
         private void button2_Click(object sender, EventArgs e)
         {
-            sort_st();
+            fix_st();
+            //sort_st();
             reload_st();
         }
-
         private void button3_Click(object sender, EventArgs e)
         {
-            Del_St del_student = new Del_St();
-            del_student.ShowDialog();
+            fix_st();
+            Del_Stu student = new Del_Stu();
+            student.ShowDialog();
+            //Del_St delet_student = new Del_St();
+            //delet_student.ShowDialog();
             reload_st();
         }
-
         private void button4_Click(object sender, EventArgs e)
         {
+            fix_st();
             Add_plus student = new Add_plus();
             student.ShowDialog();
             reload_st();
