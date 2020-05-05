@@ -11,7 +11,7 @@ namespace uchet_studentov
         {
             InitializeComponent();
         }
-        bool check_file = true;//Изменить на false когда закончу модуль чтения из документа.
+        /*
         private void open_button_Click(object sender, EventArgs e)
         {
             if (openFileDialog1.ShowDialog()==DialogResult.OK) 
@@ -21,7 +21,7 @@ namespace uchet_studentov
                 open_button.Text = "Файл добавлен";
             }
         }
-
+        */
         private void button_gen_Click(object sender, EventArgs e)
         {
             // Добавление студента
@@ -41,17 +41,13 @@ namespace uchet_studentov
             {
                 check = false;
             }
-            if (check_file == false)
-            {
-                check = false;
-            }
             if (textBoxKol.Text == "")
             {
                 check = false;
             }
             if (!check)
             {
-                MessageBox.Show("Ошибка! Заполните все поля и добавьте файл!");
+                MessageBox.Show("Ошибка! Заполните все поля!");
             }
             else if (!FIO)
             {

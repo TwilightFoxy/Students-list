@@ -31,8 +31,6 @@
             this.components = new System.ComponentModel.Container();
             this.textBoxName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.open_button = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.label3 = new System.Windows.Forms.Label();
             this.textBoxKol = new System.Windows.Forms.TextBox();
@@ -66,31 +64,6 @@
             this.label1.Size = new System.Drawing.Size(165, 17);
             this.label1.TabIndex = 1;
             this.label1.Text = "Введите ФИО студента";
-            // 
-            // label2
-            // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(25, 136);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(198, 17);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Добавьте файл с заданиями";
-            // 
-            // open_button
-            // 
-            this.open_button.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.open_button.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.open_button.Location = new System.Drawing.Point(281, 127);
-            this.open_button.Name = "open_button";
-            this.open_button.Size = new System.Drawing.Size(165, 26);
-            this.open_button.TabIndex = 3;
-            this.open_button.Text = "Добавить файл";
-            this.open_button.UseVisualStyleBackColor = true;
-            this.open_button.Click += new System.EventHandler(this.open_button_Click);
             // 
             // openFileDialog1
             // 
@@ -147,7 +120,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.button_gen.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_gen.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.button_gen.Location = new System.Drawing.Point(28, 162);
+            this.button_gen.Location = new System.Drawing.Point(28, 127);
             this.button_gen.Name = "button_gen";
             this.button_gen.Size = new System.Drawing.Size(418, 36);
             this.button_gen.TabIndex = 10;
@@ -164,14 +137,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(482, 223);
+            this.ClientSize = new System.Drawing.Size(482, 193);
             this.Controls.Add(this.button_gen);
             this.Controls.Add(this.textBoxGroup);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.textBoxKol);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.open_button);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxName);
             this.Name = "New_St";
@@ -186,8 +157,6 @@
 
         private System.Windows.Forms.TextBox textBoxName;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button open_button;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBoxKol;
