@@ -22,3 +22,4 @@ D:\repo\Students list\uchet_studentov\uchet_studentov\obj\Debug\uchet_studentov.
 D:\repo\Students list\uchet_studentov\uchet_studentov\obj\Debug\uchet_studentov.pdb
 D:\repo\Students list\uchet_studentov\uchet_studentov\obj\Debug\uchet_studentov.Add_plus.resources
 D:\repo\Students list\uchet_studentov\uchet_studentov\obj\Debug\uchet_studentov.Del_Stu.resources
+D:\repo\Students list\uchet_studentov\uchet_studentov\obj\Debug\uchet_studentov.New_Doc.resources

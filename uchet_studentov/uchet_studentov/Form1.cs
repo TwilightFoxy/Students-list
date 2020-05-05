@@ -194,5 +194,16 @@ namespace uchet_studentov
             check_st();
             reload_st();
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            fix_st();
+            New_Doc st = new New_Doc();
+            st.ShowDialog();
+            fix_st();
+            reload_st();
+            check_st();
+            reload_st();
+        }
     }
 }
