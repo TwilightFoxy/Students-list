@@ -1,0 +1,13 @@
+D:\repo\Students list\uchet_studentov\uchet_studentov\bin\Release\uchet_studentov.exe.config
+D:\repo\Students list\uchet_studentov\uchet_studentov\bin\Release\uchet_studentov.exe
+D:\repo\Students list\uchet_studentov\uchet_studentov\bin\Release\uchet_studentov.pdb
+D:\repo\Students list\uchet_studentov\uchet_studentov\obj\Release\uchet_studentov.Form1.resources
+D:\repo\Students list\uchet_studentov\uchet_studentov\obj\Release\uchet_studentov.New_St.resources
+D:\repo\Students list\uchet_studentov\uchet_studentov\obj\Release\uchet_studentov.Del_Stu.resources
+D:\repo\Students list\uchet_studentov\uchet_studentov\obj\Release\uchet_studentov.Add_plus.resources
+D:\repo\Students list\uchet_studentov\uchet_studentov\obj\Release\uchet_studentov.New_Doc.resources
+D:\repo\Students list\uchet_studentov\uchet_studentov\obj\Release\uchet_studentov.Properties.Resources.resources
+D:\repo\Students list\uchet_studentov\uchet_studentov\obj\Release\uchet_studentov.csproj.GenerateResource.cache
+D:\repo\Students list\uchet_studentov\uchet_studentov\obj\Release\uchet_studentov.csproj.CoreCompileInputs.cache
+D:\repo\Students list\uchet_studentov\uchet_studentov\obj\Release\uchet_studentov.exe
+D:\repo\Students list\uchet_studentov\uchet_studentov\obj\Release\uchet_studentov.pdb

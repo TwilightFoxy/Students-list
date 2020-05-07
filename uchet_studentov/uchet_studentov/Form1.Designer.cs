@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.button1 = new System.Windows.Forms.Button();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.button2 = new System.Windows.Forms.Button();
@@ -61,7 +60,9 @@
             this.richTextBox1.Size = new System.Drawing.Size(580, 422);
             this.richTextBox1.TabIndex = 1;
             this.richTextBox1.Text = "";
-            this.toolTip1.SetToolTip(this.richTextBox1, resources.GetString("richTextBox1.ToolTip"));
+            this.toolTip1.SetToolTip(this.richTextBox1, "Фамилия, Имя, Отчество, № группы, Кол-во заданий, {Прогресс выполнения заданий}.\r" +
+        "\n0 - Студент не приступал к заданию.\r\n1...n - Студент неуспешно выполнил задание" +
+        " n раз\r\n-1 - Студент сдал задание.");
             // 
             // button2
             // 

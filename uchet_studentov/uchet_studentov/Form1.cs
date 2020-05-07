@@ -54,93 +54,97 @@ namespace uchet_studentov
                 fstream.Read(output, 0, output.Length);
                 // декодируем байты в строку
                 string textFromFile = Encoding.Default.GetString(output);
-                char[] charsToTrim = { ' ', '\n' };
-                textFromFile = textFromFile.Trim(charsToTrim);
-                string[] mystring = textFromFile.Split('\n');
-                //Разделил файл на строки, теперь разделим строки на слова.
-                int N = mystring.Length;
-                //richTextBox2.Text = "" + N;
-                string[] mass_of_nums = new string[N + 10];
-                for (int i = 0; i < N; i++)
+                if (textFromFile != "") 
                 {
-                    mass_of_nums[i] = "";
-                }
-                int z = 0;
-                int[] new_list = new int[N];
-                bool prov = false;
-                for (int i = 0; i < N && mystring[i] != "\r"; i++)
-                {
-                    bool cheker = true;
-                    string[] words = mystring[i].Split(' ');
-                    for (int j = 5; j < 5 + Convert.ToInt32(words[4]); j++)
+                    char[] charsToTrim = { ' ', '\n' };
+                    textFromFile = textFromFile.Trim(charsToTrim);
+                    string[] mystring = textFromFile.Split('\n');
+                    //Разделил файл на строки, теперь разделим строки на слова.
+                    int N = mystring.Length;
+                    //richTextBox2.Text = "" + N;
+                    string[] mass_of_nums = new string[N + 10];
+                    for (int i = 0; i < N; i++)
                     {
-                        mass_of_nums[j - 5] = words[j];
+                        mass_of_nums[i] = "";
                     }
-                    for (int q = 0; q < N; q++)
+                    int z = 0;
+                    int[] new_list = new int[N];
+                    bool prov = false;
+                    for (int i = 0; i < N && mystring[i] != "\r"; i++)
                     {
-                        if (mass_of_nums[q] != "-1")
-                            cheker = false;
-                    }
-                    if (cheker)
-                    {
-                        new_list[i] = 1;
-                        prov = true;
-                    }
-                    else
-                    {
-                        new_list[i] = 0;
-                    }
-                }
-                new_str = "";
-                new_str_not = "";
-                for (int w = 0; w < N; w++)
-                {
-                    if (new_list[w] == 1)
-                    {
-                        if (w != N - 1)
+                        bool cheker = true;
+                        string[] words = mystring[i].Split(' ');
+                        for (int j = 5; j < 5 + Convert.ToInt32(words[4]); j++)
                         {
-                            new_str += mystring[w] + "\n";
+                            mass_of_nums[j - 5] = words[j];
+                        }
+                        for (int q = 0; q < N; q++)
+                        {
+                            if (mass_of_nums[q] != "-1")
+                                cheker = false;
+                        }
+                        if (cheker)
+                        {
+                            new_list[i] = 1;
+                            prov = true;
                         }
                         else
                         {
-                            new_str += mystring[w];
+                            new_list[i] = 0;
                         }
                     }
-                    else
+                    new_str = "";
+                    new_str_not = "";
+                    for (int w = 0; w < N; w++)
                     {
-                        if (w != N - 1)
+                        if (new_list[w] == 1)
                         {
-                            new_str_not += mystring[w] + "\n";
+                            if (w != N - 1)
+                            {
+                                new_str += mystring[w] + "\n";
+                            }
+                            else
+                            {
+                                new_str += mystring[w];
+                            }
                         }
                         else
                         {
-                            new_str_not += mystring[w];
+                            if (w != N - 1)
+                            {
+                                new_str_not += mystring[w] + "\n";
+                            }
+                            else
+                            {
+                                new_str_not += mystring[w];
+                            }
+                        }
+                    }
+                    // new_str - Студенты, которые сдали всё.
+                    // new_str_not - Студенты, которые ещё не сдали.
+                    //MessageBox.Show(new_str);
+                    //MessageBox.Show(new_str_not);
+                    if (new_str != "")
+                    {
+                        string message = "Студенты:\n";
+                        string[] win_st = new_str.Split('\n');
+                        for (int i = 0; i < win_st.Length; i++)
+                        {
+                            string[] words = win_st[i].Split(' ');
+                            message += words[0] + "\n";
+                        }
+                        message += "Успешно завершили все задания!\nХотитие удалить их из списка должников?";
+                        const string caption = "Ура!";
+                        var result = MessageBox.Show(message, caption,
+                                     MessageBoxButtons.YesNo,
+                                     MessageBoxIcon.Question);
+                        if (result == DialogResult.Yes)
+                        {
+                            main_prov = true;
                         }
                     }
                 }
-                // new_str - Студенты, которые сдали всё.
-                // new_str_not - Студенты, которые ещё не сдали.
-                //MessageBox.Show(new_str);
-                //MessageBox.Show(new_str_not);
-                if (new_str != "")
-                {
-                    string message = "Студенты:\n"; 
-                    string[] win_st = new_str.Split('\n');
-                    for (int i = 0; i < win_st.Length; i++)
-                    {
-                        string[] words = win_st[i].Split(' ');
-                        message += words[0] + "\n";
-                    }
-                    message += "Успешно завершили все задания!\nХотитие удалить их из списка должников?";
-                    const string caption = "Ура!";
-                    var result = MessageBox.Show(message, caption,
-                                 MessageBoxButtons.YesNo,
-                                 MessageBoxIcon.Question);
-                    if (result == DialogResult.Yes)
-                    {
-                        main_prov = true;
-                    }
-                }
+                
             }
             if (main_prov)
             {

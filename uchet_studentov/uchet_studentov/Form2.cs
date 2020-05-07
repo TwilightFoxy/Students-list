@@ -85,7 +85,7 @@ namespace uchet_studentov
                     {
                         sw.WriteLine(text);
                     }
-                    string new_text = "";
+                    string new_text = text;
                     using (FileStream fstream = new FileStream(writePath, FileMode.OpenOrCreate))
                     {
                         byte[] output = new byte[4];
@@ -95,52 +95,59 @@ namespace uchet_studentov
                         // декодируем байты в строку
 
                         string textFromFile = Encoding.Default.GetString(output);
+                        textFromFile = textFromFile.Trim('\r');
+                        textFromFile = textFromFile.Trim('\n');
+                        //textFromFile = textFromFile.Trim('\r');
+                        textFromFile += '\n';
                         string[] mystring = textFromFile.Split('\n');
-                        //Разделил файл на строки, теперь разделим строки на слова.
-                        int N = mystring.Length - 1;
-                        //richTextBox2.Text = "" + N;
-                        int[,] mass_of_students = new int[N, N];
-                        for (int i = 0; i < N; i++)
+                        if (text+"\r\n"!= textFromFile)
                         {
-                            mass_of_students[0, i] = 0;
-                            mass_of_students[1, i] = i;
-                        }
-                        int z = 0;
-                        for (int i = 0; i < N; i++)
-                        {
-                            string[] words = mystring[i].Split(' ');
-                            mass_of_students[0, z] = Convert.ToInt32(words[3]);
-                            z++;
-                        }
-                        /*Сортировка*/
-                        int temp;
-                        for (int i = 0; i < N; i++)
-                        {
-                            for (int j = i + 1; j < N; j++)
+                            new_text = "";
+                            //Разделил файл на строки, теперь разделим строки на слова.
+                            int N = mystring.Length - 1;
+                            //richTextBox2.Text = "" + N;
+                            int[,] mass_of_students = new int[N, N];
+                            for (int i = 0; i < N; i++)
                             {
-                                if (mass_of_students[0, i] > mass_of_students[0, j])
+                                mass_of_students[0, i] = 0;
+                                mass_of_students[1, i] = i;
+                            }
+                            int z = 0;
+                            for (int i = 0; i < N; i++)
+                            {
+                                string[] words = mystring[i].Split(' ');
+                                mass_of_students[0, z] = Convert.ToInt32(words[3]);
+                                z++;
+                            }
+                            /*Сортировка*/
+                            int temp;
+                            for (int i = 0; i < N; i++)
+                            {
+                                for (int j = i + 1; j < N; j++)
                                 {
-                                    temp = mass_of_students[0, i];
-                                    mass_of_students[0, i] = mass_of_students[0, j];
-                                    mass_of_students[0, j] = temp;
-                                    temp = mass_of_students[1, i];
-                                    mass_of_students[1, i] = mass_of_students[1, j];
-                                    mass_of_students[1, j] = temp;
+                                    if (mass_of_students[0, i] > mass_of_students[0, j])
+                                    {
+                                        temp = mass_of_students[0, i];
+                                        mass_of_students[0, i] = mass_of_students[0, j];
+                                        mass_of_students[0, j] = temp;
+                                        temp = mass_of_students[1, i];
+                                        mass_of_students[1, i] = mass_of_students[1, j];
+                                        mass_of_students[1, j] = temp;
+                                    }
+                                }
+                            }
+                            for (int i = 0; i < N; i++)
+                            {
+                                if (i != N - 1)
+                                {
+                                    new_text += mystring[mass_of_students[1, i]] + '\n';
+                                }
+                                else
+                                {
+                                    new_text += mystring[mass_of_students[1, i]];
                                 }
                             }
                         }
-                        for (int i = 0; i < N; i++)
-                        {
-                            if (i != N - 1)
-                            {
-                                new_text += mystring[mass_of_students[1, i]] + '\n';
-                            }
-                            else
-                            {
-                                new_text += mystring[mass_of_students[1, i]];
-                            }
-                        }
-
                     }
                     using (StreamWriter sw = new StreamWriter(writePath, false, System.Text.Encoding.Default))
                     {
