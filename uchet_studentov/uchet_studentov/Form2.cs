@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Text;
 using System.Windows.Forms;
-using System.IO;
 using MySql.Data.MySqlClient;
-
 namespace uchet_studentov
 {
     public partial class New_St : Form
@@ -13,13 +10,8 @@ namespace uchet_studentov
             InitializeComponent();
         }
         Students students = new Students();
-        
-
-
         private void button_gen_Click(object sender, EventArgs e)
         {
-            
-
             // Добавление студента
             bool check = true;
             bool FIO = true;
@@ -52,7 +44,6 @@ namespace uchet_studentov
                 connection.Open();
                 string newID = "SELECT MAX(`ID`) FROM `students`"; 
                 MySqlCommand cmd = new MySqlCommand(newID, connection);
-
                 int lastID = Convert.ToInt32(cmd.ExecuteScalar());
                 string query = "INSERT INTO `students` (`ID`, `FIO`, `Group`) VALUES ('"+ (lastID+1) + "', '"+name+"', '"+ textBoxGroup.Text + "')";
                 MySqlCommand command = new MySqlCommand(query, connection);

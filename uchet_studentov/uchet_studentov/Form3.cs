@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Text;
 using System.Windows.Forms;
-using System.IO;
+using MySql.Data.MySqlClient;
 
 namespace uchet_studentov
 {
@@ -11,82 +10,47 @@ namespace uchet_studentov
         public Del_Stu()
         {
             InitializeComponent();
-
-            string text_after_del = "";
-            text_after_del = students.read_file(students.writePath);
-            students.write_file(students.writePath, text_after_del, false);
-            string textFromFile = students.read_file(students.writePath);
-            char[] charsToTrim = { ' ', '\n' };
-            textFromFile = textFromFile.Trim(charsToTrim);
-            string[] mystring = textFromFile.Split('\n');
-            int N = mystring.Length;
-            string[] mass_of_students = new string[N];
-            for (int i = 0; i < N; i++)
+            string connStr = "server=localhost;user=root;database=Students;password=0000;";
+            MySqlConnection conn = new MySqlConnection(connStr);
+            conn.Open();
+            string sql = "SELECT `FIO`, `Group` FROM `students`";
+            MySqlCommand command = new MySqlCommand(sql, conn);
+            MySqlDataReader reader = command.ExecuteReader();
+            while (reader.Read())
             {
-                mass_of_students[i] = "";
+                listBox1.Items.Add(reader[0].ToString() + " " + reader[1].ToString());
             }
-            int z = 0;
-            for (int i = 0; i < N; i++)
-            {
-                if (mystring[i] != "\r")
-                {
-                    string[] words = mystring[i].Split(' ');
-                    mass_of_students[z] = words[0] + " " + words[1] + " " + words[2] + " " + words[3];
-                    z++;
-                    listBox1.Items.Add(mass_of_students[i]);
-                }
-            }
+            reader.Close();
+            conn.Close();
         }
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {
-                string text_after_del = students.read_file(students.writePath);
-                students.write_file(students.writePath, text_after_del, false);
-                string textFromFile = students.read_file(students.writePath);
-                text_after_del = textFromFile;
-                string[] mystring = textFromFile.Split('\n');
-                int N = mystring.Length - 1;
-                int dolg = 0; ;
-                string[] mass_of_students = new string[N];
-                for (int i = 0; i < N; i++)
-                    mass_of_students[i] = "";
-                bool prov = false;
-                string[] words = mystring[listBox1.SelectedIndex].Split(' ');
-                dolg = Convert.ToInt32(words[4]);
-                for (int i = 5; i < 5 + Convert.ToInt32(words[4]); i++)
-                    if (words[i] == "-1")
+                string connStr = "server=localhost;user=root;database=Students;password=0000;";
+                MySqlConnection conn = new MySqlConnection(connStr);
+                conn.Open();
+                string sql = "SELECT `ID`, `FIO`, `Group` FROM `students`";
+                MySqlCommand command = new MySqlCommand(sql, conn);
+                MySqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    if (Convert.ToInt32(reader[0].ToString()) == listBox1.SelectedIndex + 1)
                     {
-                        dolg--;
-                        prov = true;
-                    }
-                    else if (Convert.ToInt32(words[i]) >= 0)
-                        prov = false;
-                bool lastprov = false;
-                string message = "";
-                const string caption = "Удаление";
-                if (prov)
-                {
-                    message = "Вы хотите удалить студента " + words[0] + " " + words[1] + " " + words[2] + " из " + words[3] + " группы? Все задания ВЫПОЛНЕННЫ! Поздравляю студента!";
-                    lastprov = true;
-                }
-                else 
-                {
-                    message = "Вы хотите удалить студента " + words[0] + " " + words[1] + " " + words[2] + " из " + words[3] + " группы? Ещё не выполненны " + dolg + "/" + words[4] + " заданий!";
-                    lastprov = true;
-                }
-                if (lastprov)
-                {
-                    var result = MessageBox.Show(message, caption,
-                                    MessageBoxButtons.YesNo,
-                                    MessageBoxIcon.Question);
-                    if (result == DialogResult.Yes)
-                    {
-                        string substr = mystring[listBox1.SelectedIndex] + "\n";
-                        text_after_del = textFromFile.Replace(substr, "");
+                        string message = "Вы хотите удалить студента " + reader[1] + " из " + reader[2] + " группы?";
+                        var result = MessageBox.Show(message, "Удаление",
+                            MessageBoxButtons.YesNo,
+                            MessageBoxIcon.Question);
+                        if (result == DialogResult.Yes)
+                        {
+                            string delet = "DELETE FROM `students` WHERE ID = "+ reader[0];
+                            command = new MySqlCommand(delet, conn);
+                        }
                     }
                 }
-                students.write_file(students.writePath, text_after_del, false);
+                reader.Close();
+                command.ExecuteNonQuery();
+                conn.Close();
                 Close();
             }
             catch (Exception z)
@@ -94,6 +58,7 @@ namespace uchet_studentov
                 Del_Stu student = new Del_Stu();
                 student.ShowDialog();
             }
+            
         }
     }
 }
