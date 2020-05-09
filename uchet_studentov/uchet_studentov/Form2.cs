@@ -42,10 +42,10 @@ namespace uchet_studentov
                 string connectionString = "server=localhost;user=root;database=Students;password=0000;";
                 MySqlConnection connection = new MySqlConnection(connectionString); 
                 connection.Open();
-                string newID = "SELECT MAX(`ID`) FROM `students`"; 
-                MySqlCommand cmd = new MySqlCommand(newID, connection);
-                int lastID = Convert.ToInt32(cmd.ExecuteScalar());
-                string query = "INSERT INTO `students` (`ID`, `FIO`, `Group`) VALUES ('"+ (lastID+1) + "', '"+name+"', '"+ textBoxGroup.Text + "')";
+                //string newID = "SELECT MAX(`ID`) FROM `students`"; 
+                //MySqlCommand cmd = new MySqlCommand(newID, connection);
+                //int lastID = Convert.ToInt32(cmd.ExecuteScalar());
+                string query = "INSERT INTO `students` (`FIO`, `Group`) VALUES ('"+name+"', '"+ textBoxGroup.Text + "')";
                 MySqlCommand command = new MySqlCommand(query, connection);
                 command.ExecuteNonQuery();
                 connection.Close();

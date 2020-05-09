@@ -11,41 +11,37 @@ namespace uchet_studentov
         public Form1()
         {
             InitializeComponent();
-            students.reload_st(richTextBox1);
-            students.check_st(students.writePath); 
-            students.reload_st(richTextBox1);
+            students.reload_st(listBox1);
+            //students.check_st(students.writePath); 
+            //students.reload_st(listBox1);
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            students.fix_st(students.writePath);
             New_St new_student = new New_St();
             new_student.ShowDialog();
-            students.standart_obr(students.writePath,richTextBox1);
+            students.standart_obr(students.writePath, listBox1);
         }
         private void button2_Click(object sender, EventArgs e)
         {
-            students.standart_obr(students.writePath, richTextBox1);
+            students.standart_obr(students.writePath, listBox1);
         }
         private void button3_Click(object sender, EventArgs e)
         {
-            students.fix_st(students.writePath);
             Del_Stu del_student = new Del_Stu();
             del_student.ShowDialog();
-            students.standart_obr(students.writePath, richTextBox1);
+            students.standart_obr(students.writePath, listBox1);
         }
         private void button4_Click(object sender, EventArgs e)
         {
-            students.fix_st(students.writePath);
             Add_plus add_pl = new Add_plus();
             add_pl.ShowDialog();
-            students.standart_obr(students.writePath, richTextBox1);
+            students.standart_obr(students.writePath, listBox1);
         }
         private void button5_Click(object sender, EventArgs e)
         {
-            students.fix_st(students.writePath);
             New_Doc st = new New_Doc();
             st.ShowDialog();
-            students.standart_obr(students.writePath, richTextBox1);
+            students.standart_obr(students.writePath, listBox1);
         }
     }
 }

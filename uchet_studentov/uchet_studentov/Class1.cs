@@ -2,6 +2,7 @@
 using System.Text;
 using System.Windows.Forms;
 using System.IO;
+using MySql.Data.MySqlClient;
 
 namespace uchet_studentov
 {
@@ -9,6 +10,9 @@ namespace uchet_studentov
     {
         public string writePath = @"C:\Users\User\Documents\Students\List.txt";//Позже буду использовать локальную папку в которой находится .exe
         public string dir = "C:\\Users\\User\\Documents\\Students";
+
+        string connStr = "server=localhost;user=root;database=Students;password=0000;";
+
         public string read_file(string writePath)
         {
             string textFromFile = "";
@@ -31,19 +35,23 @@ namespace uchet_studentov
             }
         }
         //Чтение файла по пути, возвращает строкой.
-        public void reload_st(RichTextBox richTextBox1)
+        public void reload_st(ListBox listBox1)
         {
-            richTextBox1.Clear();
-            Directory.CreateDirectory(dir);
-            richTextBox1.Text = read_file(writePath);
+            listBox1.Items.Clear();
+            MySqlConnection conn = new MySqlConnection(connStr);
+            conn.Open(); 
+            string sql = "SELECT `FIO`, `Group` FROM `students` ORDER BY `Group`";
+            MySqlCommand command = new MySqlCommand(sql, conn);
+            MySqlDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                listBox1.Items.Add(reader[0].ToString() + " " + reader[1].ToString()+" группа.");
+            }
+            reader.Close();
+            conn.Close();
+
         }
         //Отчистить и перезаписать данные с файла
-        public void fix_st(string writePath)
-        {
-            string new_text = read_file(writePath);
-            write_file(writePath, new_text, false);
-        }
-        //Удаление лишних пробелов и пустых строк
         public void check_st(string writePath)
         {
             string new_str = "", new_str_not = "";
@@ -111,12 +119,11 @@ namespace uchet_studentov
                 write_file(writePath, new_str_not, false);
         }
         //Проверка на наличие студентов, выполнивших все задания
-        public void standart_obr(string writePath, RichTextBox richTextBox1)
+        public void standart_obr(string writePath, ListBox listBox1)
         {
-            fix_st(writePath);
-            reload_st(richTextBox1);
-            check_st(writePath);
-            reload_st(richTextBox1);
+            reload_st(listBox1);
+            //check_st(writePath);
+            //reload_st(listBox1);
         }
         //Обновление, проверка и перезапись с файла в RichTextBox
     }
