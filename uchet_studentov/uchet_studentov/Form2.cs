@@ -2,6 +2,7 @@
 using System.Text;
 using System.Windows.Forms;
 using System.IO;
+using MySql.Data.MySqlClient;
 
 namespace uchet_studentov
 {
@@ -12,8 +13,13 @@ namespace uchet_studentov
             InitializeComponent();
         }
         Students students = new Students();
+        
+
+
         private void button_gen_Click(object sender, EventArgs e)
         {
+            
+
             // Добавление студента
             bool check = true;
             bool FIO = true;
@@ -25,19 +31,15 @@ namespace uchet_studentov
             }
             if (textBoxName.Text == "")
             {
-                check = false;
+                FIO = false;
             }
             if (textBoxGroup.Text == "")
             {
                 check = false;
             }
-            if (textBoxKol.Text == "")
-            {
-                check = false;
-            }
             if (!check)
             {
-                MessageBox.Show("Ошибка! Заполните все поля!");
+                MessageBox.Show("Ошибка! Неправильно заполненно поле группы!");
             }
             else if (!FIO)
             {
@@ -45,82 +47,17 @@ namespace uchet_studentov
             }
             else
             {
-                Directory.CreateDirectory(students.dir);
+                string connectionString = "server=localhost;user=root;database=Students;password=0000;";
+                MySqlConnection connection = new MySqlConnection(connectionString); 
+                connection.Open();
+                string newID = "SELECT MAX(`ID`) FROM `students`"; 
+                MySqlCommand cmd = new MySqlCommand(newID, connection);
 
-                string kolz = textBoxKol.Text;
-                int kolzad = Convert.ToInt32(kolz);
-                if (kolzad < 1)
-                    MessageBox.Show("Ошибка! Неккоректное колличество заданий!");
-                else
-                {
-                    name = textBoxName.Text;
-                    string group = textBoxGroup.Text;
-                    int[] zad = new int[kolzad];
-                    for (int i = 0; i < kolzad; i++)
-                    {
-                        zad[i] = 0;
-                    }
-                    string text = name + " " + group + " " + kolz;
-                    for (int i = 0; i < kolzad; i++)
-                    {
-                        text += " " + zad[i];
-                    }
-                    students.write_file(students.writePath, text, true);
-                    string new_text = text;
-                    string textFromFile = students.read_file(students.writePath);
-                    textFromFile = textFromFile.Trim('\r');
-                    textFromFile = textFromFile.Trim('\n');
-                    textFromFile += "\n";
-                    string[] mystring = textFromFile.Split('\n');
-
-                    if (text + "\r\n" != textFromFile)
-                    {
-                        new_text = "";
-                        int N = mystring.Length - 1;
-                        int[,] mass_of_students = new int[N, N];
-                        for (int i = 0; i < N; i++)
-                        {
-                            mass_of_students[0, i] = 0;
-                            mass_of_students[1, i] = i;
-                        }
-                        int z = 0;
-                        for (int i = 0; i < N; i++)
-                        {
-                            string[] words = mystring[i].Split(' ');
-                            mass_of_students[0, z] = Convert.ToInt32(words[3]);
-                            z++;
-                        }
-                        /*Сортировка*/
-                        int temp;
-                        for (int i = 0; i < N; i++)
-                        {
-                            for (int j = i + 1; j < N; j++)
-                            {
-                                if (mass_of_students[0, i] > mass_of_students[0, j])
-                                {
-                                    temp = mass_of_students[0, i];
-                                    mass_of_students[0, i] = mass_of_students[0, j];
-                                    mass_of_students[0, j] = temp;
-                                    temp = mass_of_students[1, i];
-                                    mass_of_students[1, i] = mass_of_students[1, j];
-                                    mass_of_students[1, j] = temp;
-                                }
-                            }
-                        }
-                        for (int i = 0; i < N; i++)
-                        {
-                            if (i != N - 1)
-                            {
-                                new_text += mystring[mass_of_students[1, i]] + '\n';
-                            }
-                            else
-                            {
-                                new_text += mystring[mass_of_students[1, i]];
-                            }
-                        }
-                    }
-                    students.write_file(students.writePath, new_text, false);
-                }
+                int lastID = Convert.ToInt32(cmd.ExecuteScalar());
+                string query = "INSERT INTO `students` (`ID`, `FIO`, `Group`) VALUES ('"+ (lastID+1) + "', '"+name+"', '"+ textBoxGroup.Text + "')";
+                MySqlCommand command = new MySqlCommand(query, connection);
+                command.ExecuteNonQuery();
+                connection.Close();
             }
             Close();
         }

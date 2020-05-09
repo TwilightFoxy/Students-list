@@ -32,8 +32,6 @@
             this.textBoxName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.label3 = new System.Windows.Forms.Label();
-            this.textBoxKol = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.textBoxGroup = new System.Windows.Forms.TextBox();
             this.button_gen = new System.Windows.Forms.Button();
@@ -70,28 +68,6 @@
             this.openFileDialog1.FileName = "openFileDialog1";
             this.openFileDialog1.Filter = "(*.docx)|*.docx|(*.doc)|*.doc";
             // 
-            // label3
-            // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(25, 95);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(168, 17);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Сколько всего заданий?";
-            // 
-            // textBoxKol
-            // 
-            this.textBoxKol.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxKol.Location = new System.Drawing.Point(281, 92);
-            this.textBoxKol.Name = "textBoxKol";
-            this.textBoxKol.Size = new System.Drawing.Size(165, 22);
-            this.textBoxKol.TabIndex = 5;
-            // 
             // label5
             // 
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -120,7 +96,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.button_gen.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_gen.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.button_gen.Location = new System.Drawing.Point(28, 127);
+            this.button_gen.Location = new System.Drawing.Point(28, 92);
             this.button_gen.Name = "button_gen";
             this.button_gen.Size = new System.Drawing.Size(418, 36);
             this.button_gen.TabIndex = 10;
@@ -137,12 +113,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(482, 193);
+            this.ClientSize = new System.Drawing.Size(482, 148);
             this.Controls.Add(this.button_gen);
             this.Controls.Add(this.textBoxGroup);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.textBoxKol);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxName);
             this.Name = "New_St";
@@ -158,8 +132,6 @@
         private System.Windows.Forms.TextBox textBoxName;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBoxKol;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox textBoxGroup;
         private System.Windows.Forms.Button button_gen;
